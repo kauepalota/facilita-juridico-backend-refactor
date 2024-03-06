@@ -14,7 +14,6 @@ import { ClientService } from './client.service';
 import { ClientCreateDto } from './dtos/client-create-dto';
 import { ClientUpdateDto } from './dtos/client-update-dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ClientFetchAllDto } from './dtos/client-fetch-dto';
 
 @Controller('api/v1/clients')
 @ApiTags('clients')
