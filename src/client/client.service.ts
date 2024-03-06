@@ -113,9 +113,6 @@ export class ClientService {
         throw new Error('Error while finding the next client');
       }
 
-      console.log('current', current);
-      console.log('next', next);
-
       current = next;
       route.push(next);
       visiteds.add(next.id);

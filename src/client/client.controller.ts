@@ -4,9 +4,11 @@ import {
   Delete,
   Get,
   Param,
+  ParseBoolPipe,
   ParseIntPipe,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { ClientCreateDto } from './dtos/client-create-dto';
@@ -25,8 +27,14 @@ export class ClientController {
     summary: 'Get clients',
     description: 'Get all sessions summarized.',
   })
-  async findAll(@Body() dto: ClientFetchAllDto) {
-    return this.clientService.findAll(dto);
+  async findAll(
+    @Query('routing', new ParseBoolPipe({ optional: true })) routing?: boolean,
+    @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+  ) {
+    return this.clientService.findAll({
+      routing,
+      limit,
+    });
   }
 
   @Get(':id')
