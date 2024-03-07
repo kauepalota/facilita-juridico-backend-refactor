@@ -74,7 +74,7 @@ export class ClientController {
     summary: 'Delete a client',
     description: 'Delete a client by its ID.',
   })
-  async remove(@Param('id', ParseIntPipe) id: string) {
+  async remove(@Param('id') id: string) {
     return this.clientService.remove(id);
   }
 }
