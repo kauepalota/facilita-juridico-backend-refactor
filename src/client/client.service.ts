@@ -29,7 +29,7 @@ export class ClientService {
     return this.calculateShortestRoute(data, limit);
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.prisma.client.findUnique({
       where: {
         id,
@@ -38,7 +38,7 @@ export class ClientService {
   }
 
   async update(
-    id: number,
+    id: string,
     data: { name?: string; locationX?: number; locationY?: number },
   ) {
     const updateData: {
@@ -61,7 +61,7 @@ export class ClientService {
     });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.prisma.client.delete({
       where: {
         id,
@@ -71,8 +71,8 @@ export class ClientService {
 
   private calculateShortestRoute(clients: Client[], limit: number): Client[] {
     const virtual = {
-      id: 0,
-      name: 'Virtual',
+      id: '',
+      name: 'Center',
       locationX: 0,
       locationY: 0,
     };
@@ -82,7 +82,7 @@ export class ClientService {
     const matrix = this.calculateMatrix(clients);
 
     const route = [];
-    const visiteds = new Set<number>([virtual.id]);
+    const visiteds = new Set<string>([virtual.id]);
 
     let current = virtual;
 

@@ -42,7 +42,7 @@ export class ClientController {
     summary: 'Get client',
     description: 'Retrieve the result data of a client.',
   })
-  async findOne(@Param('id', ParseIntPipe) id: number) {
+  async findOne(@Param('id') id: string) {
     return this.clientService.findOne(id);
   }
 
@@ -64,7 +64,7 @@ export class ClientController {
   })
   async update(
     @Body() dto: ClientUpdateDto,
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: string,
   ) {
     return this.clientService.update(id, dto);
   }
@@ -74,7 +74,7 @@ export class ClientController {
     summary: 'Delete a client',
     description: 'Delete a client by its ID.',
   })
-  async remove(@Param('id', ParseIntPipe) id: number) {
+  async remove(@Param('id', ParseIntPipe) id: string) {
     return this.clientService.remove(id);
   }
 }

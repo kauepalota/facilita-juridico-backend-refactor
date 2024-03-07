@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Client {
-  id        Int    @id @default(autoincrement())
+  id        String @id @default(nanoid())
   name      String
   locationX Float
   locationY Float
